@@ -1,12 +1,12 @@
 # Case studies for demo
-These are the cases for the demo track RECSYS 2024 conference:
+Cases for the demo track RecSys'24 conference:
 1. [Synthetic data generation](https://github.com/monkey0head/Sim4Rec/blob/demo/demo/synthetic_data_generation.ipynb)
 
 Generation of synthetic users based on real data.
 
 2. [Long-term RS performance evaluation](https://github.com/monkey0head/Sim4Rec/blob/demo/demo/rs_performance_evaluation.ipynb)
 
-Simple simulation pipeline for a long-term performance evaluation of recommender system. 
+Simple simulation pipeline for long-term performance evaluation of recommender system. 
 
 # Table of contents
 
@@ -23,23 +23,37 @@ pip install --upgrade pip wheel poetry
 poetry install
 ```
 
+Please install additional dependencies to import the UCB recommender system for the rs_performance_evaluation.ipynb
+```bash
+pip install packaging==24.0
+pip install replay-rec==0.11.0
+```
+
+Please install `rs_datasets` to import MovieLens dataset for the synthetic_data_generation.ipynb
+```bash
+pip install rs_datasets
+```
+
 ## Synthetic data generation pipeline
-1. Fit non-negative ALS for users embeddings
-2. Get users features
-3. Generate users features with CopulaGAN
-4. Evaluate generator
+1. Fit non-negative ALS to real data containing user interactions
+2. Obtain vector representations of real users
+3. Fit CopulaGAN to non-negative ALS embeddings of real users
+4. Generate synthetic user feature vectors with CopulaGAN
+5. Evaluate the quality of the synthetic user profiles
 
 ## Long-term RS performance evaluation pipeline
-1. Choose users
-2. Initialize and fit the recommender model
-3. Initialize and fit the response function
-4. Initialize simulator
-5. Run simulation cycle: 
- - Choose users
- - Get recommendations from the recommender system
- - Get responses from the response function
- - Update the interaction history
- - Measure quality
- - Refit the model
-4. Get final prediction 
-5. Measure quality
+1. Before running the simulation cycle:
+ - Initialize and fit recommender model to historical data
+ - Construct response function pipeline and fit it to items
+ - Initialize simulator
+2. Run the simulation cycle: 
+ - Sample users using a simulator
+ - Get recommendations for sampled users from the recommender system
+ - Get responses to recommended items from the response function
+ - Update user interaction history
+ - Measure the quality of the recommender system
+ - Refit the recommender model
+3. After running the simulation cycle:
+ - Get recommendations for all users from the recommender system
+ - Get responses to recommended items from the response function
+ - Measure the quality of the recommender system trained in the simulation cycle
