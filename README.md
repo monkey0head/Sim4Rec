@@ -126,7 +126,8 @@ Experiments with different datasets and tutorial how to write custom response fu
 
 ## Case studies
 
-The [cases](https://github.com/monkey0head/Sim4Rec/tree/demo/demo) for the demo track RECSYS 2024 conference:
+Case studies prepared for RecSys’24 demonstration are available in the [demo directory](https://github.com/monkey0head/Sim4Rec/tree/demo/demo).
+
 1. Synthetic data generation
 2. Long-term RS performance evaluation
 
