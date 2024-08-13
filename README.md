@@ -124,6 +124,13 @@ You can find useful examples in `notebooks` folder, which demonstrates how to us
 
 Experiments with different datasets and tutorial how to write custom response functions can be found in 'experiments' folder.
 
+## Case studies
+
+Case studies prepared for RecSys’24 demonstration are available in the [demo directory](https://github.com/monkey0head/Sim4Rec/tree/demo/demo).
+
+1. Synthetic data generation
+2. Long-term RS performance evaluation
+
 ## Build from sources
 
 ```bash
